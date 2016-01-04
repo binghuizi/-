@@ -7,7 +7,9 @@
 //
 
 #import "AppDelegate.h"
-
+#import "zhuyeViewController.h"
+#import "faxianViewController.h"
+#import "meViewController.h"
 @interface AppDelegate ()
 
 @end
@@ -18,6 +20,52 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    
+    UITabBarController *tabBarVc = [UITabBarController new];
+//主页
+    UIStoryboard *zhuyeStoryBoard = [UIStoryboard storyboardWithName:@"zhuye" bundle:nil];
+    UINavigationController *zhuyeNav = zhuyeStoryBoard.instantiateInitialViewController;
+    zhuyeNav.tabBarItem.image = [UIImage imageNamed:@"53-house.png"];
+    zhuyeNav.tabBarItem.title = @"主页";
+ 
+    
+// 发现
+    UIStoryboard *faxianStoryBoard = [UIStoryboard storyboardWithName:@"faxian" bundle:nil];
+    UINavigationController *faxianNav = faxianStoryBoard.instantiateInitialViewController;
+    faxianNav.tabBarItem.image = [UIImage imageNamed:@"71-compass.png"];
+    faxianNav.tabBarItem.title = @"发现";
+//我的
+    UIStoryboard *meStoryBoard = [UIStoryboard storyboardWithName:@"me" bundle:nil];
+    UINavigationController *meNav = meStoryBoard.instantiateInitialViewController;
+    meNav.tabBarItem.image = [UIImage imageNamed:@"29-heart.png"];
+    meNav.tabBarItem.title = @"我的";
+    
+    
+    
+    
+    
+    tabBarVc.tabBar.tintColor = [UIColor colorWithRed:27/255.0f green:185/255.0f blue:189/255.0f alpha:1.0];
+    
+    tabBarVc.viewControllers = @[zhuyeNav,faxianNav,meNav];
+    
+    self.window.rootViewController = tabBarVc;
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     return YES;
